@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'light';
+	src: url('./constants/fonts/Pretendard-Light.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'semiBold';
+	src: url('./constants/fonts/Pretendard-SemiBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'bold';
+	src: url('./constants/fonts/Pretendard-Bold.woff') format('woff');
+}
