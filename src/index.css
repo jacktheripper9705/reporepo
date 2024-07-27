@@ -17,6 +17,18 @@
 	src: url('./constants/fonts/Pretendard-Bold.woff') format('woff');
 }
 
+@layer utilities {
+	.flex-template {
+		@apply flex items-center justify-center;
+	}
+
+	.flex-col-template {
+		@apply flex flex-col items-center justify-center h-full w-full;
+	}
+}
+
 .App {
 	font-family: 'semiBold';
+	width: 100%;
+	height: 100vh;
 }

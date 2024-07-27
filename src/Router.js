@@ -1,5 +1,3 @@
-import './index.css';
-
 import { Route, Routes } from 'react-router-dom';
 
 import NotFound from './pages/NotFound/NotFound';
@@ -19,36 +17,34 @@ import UnAuthorized from './pages/UnAuthorized/UnAuthorized';
 
 const Router = () => {
 	return (
-		<div className="App">
-			<Routes>
-				<Route path="/" element={<Main />} />
+		<Routes>
+			<Route path="/" element={<Main />} />
 
-				<Route path="/login" element={<Login />} />
-				<Route path="/login/userinfo" element={<UserInfo />} />
+			<Route path="/login" element={<Login />} />
+			<Route path="/login/userinfo" element={<UserInfo />} />
 
-				<Route path="/mylists" element={<MyLists />} />
-				<Route path="/mylists/:postId" element={<PostInfo />} />
-				<Route path="/mylists/:postId/applicants" element={<Applicants />} />
+			<Route path="/mylists" element={<MyLists />} />
+			<Route path="/mylists/:postId" element={<PostInfo />} />
+			<Route path="/mylists/:postId/applicants" element={<Applicants />} />
 
-				<Route path="/applies" element={<Applies />} />
-				<Route path="/applies/:postId" element={<PostInfo />} />
+			<Route path="/applies" element={<Applies />} />
+			<Route path="/applies/:postId" element={<PostInfo />} />
 
-				<Route path="/posts/:postid" element={<PostInfo />} />
+			<Route path="/posts/:postid" element={<PostInfo />} />
 
-				<Route path="/post" element={<Post />} />
-				<Route path="/post/detail" element={<PostDetail />} />
+			<Route path="/post" element={<Post />} />
+			<Route path="/post/detail" element={<PostDetail />} />
 
-				<Route path="/select" element={<Select />} />
+			<Route path="/select" element={<Select />} />
 
-				<Route path="/landing" element={<Landing />} />
+			<Route path="/landing" element={<Landing />} />
 
-				<Route path="/review" element={<Review />} />
+			<Route path="/review" element={<Review />} />
 
-				<Route path="/unauthorized" element={<UnAuthorized />} />
-				<Route path="notFound" element={<NotFound />} />
-				<Route path="*" element={<NotFound />} />
-			</Routes>
-		</div>
+			<Route path="/unauthorized" element={<UnAuthorized />} />
+			<Route path="notFound" element={<NotFound />} />
+			<Route path="*" element={<NotFound />} />
+		</Routes>
 	);
 };
 
