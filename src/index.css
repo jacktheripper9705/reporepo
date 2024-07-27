@@ -16,3 +16,7 @@
 	font-family: 'bold';
 	src: url('./constants/fonts/Pretendard-Bold.woff') format('woff');
 }
+
+.App {
+	font-family: 'semiBold';
+}
