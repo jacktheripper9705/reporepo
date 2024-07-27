@@ -1,12 +1,5 @@
-import { Outlet } from 'react-router-dom';
-
 const Login = () => {
-	return (
-		<>
-			로그인
-			<Outlet />
-		</>
-	);
+	return <>로그인</>;
 };
 
 export default Login;
