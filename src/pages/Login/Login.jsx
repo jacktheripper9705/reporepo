@@ -1,8 +1,9 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
 	return (
-		<div className="bg-[#F5F5F5] w-full h-full">
+		<div className="w-full h-full">
 			<div className="flex-template h-full">
 				<img src="/img/whaleIcon.svg" alt="돌고래 아이콘" className="mr-4" />
 				<div>
