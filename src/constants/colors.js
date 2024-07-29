@@ -1,5 +1,8 @@
 export const colors = {
-	'Blue-100': '#10C7F9',
-	'Blue-200': '#A6B9F1',
-	'Blue-300': '#3825F2',
+	'Blue-100': '#E0F8FF',
+	'Blue-200': '#00AEFF',
+	'Blue-300': '#0095FF',
+	'Blue-400': '#2563FF',
+	Black: '#000000',
+	Gray: '#666666',
 };

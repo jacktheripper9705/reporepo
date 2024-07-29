@@ -8,6 +8,11 @@
 }
 
 @font-face {
+	font-family: 'medium';
+	src: url('./constants/fonts/Pretendard-Medium.woff') format('woff');
+}
+
+@font-face {
 	font-family: 'semiBold';
 	src: url('./constants/fonts/Pretendard-SemiBold.woff') format('woff');
 }

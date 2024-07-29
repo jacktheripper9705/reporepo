@@ -8,6 +8,7 @@ module.exports = {
 			colors: colors,
 			fontFamily: {
 				pretendardLight: 'light',
+				pretendardMedium: 'medium',
 				pretendardSemibold: 'semiBold',
 				pretendardBold: 'bold',
 			},
