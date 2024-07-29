@@ -5,6 +5,9 @@ import pluginReact from 'eslint-plugin-react';
 export default [
 	{ files: ['**/*.{js,mjs,cjs,jsx}'] },
 	{
+		env: {
+			node: true,
+		},
 		languageOptions: {
 			ecmaVersion: 'latest',
 			sourceType: 'module',
