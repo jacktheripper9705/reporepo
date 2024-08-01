@@ -45,6 +45,8 @@ const Router = () => {
 			<Route path="/unauthorized" element={<UnAuthorized />} />
 			<Route path="notFound" element={<NotFound />} />
 			<Route path="*" element={<NotFound />} />
+
+			<Route path="/applicants" element={<Applicants />} />
 		</Routes>
 	);
 };
