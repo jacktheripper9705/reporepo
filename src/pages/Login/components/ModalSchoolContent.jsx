@@ -11,7 +11,6 @@ const ModalSchoolContent = () => {
 	const [, setIsOpen] = useRecoilState(modalState);
 	const [isLoading, setIsLoading] = useState(true);
 	const [searchSchoolName, setSearchSchoolName] = useState('');
-	const [searchBtn, setSearchBtn] = useState(false);
 
 	const handleSearchName = (e) => {
 		setSearchSchoolName(e.target.value);
@@ -35,6 +34,7 @@ const ModalSchoolContent = () => {
 	const handleSearchResult = async () => {
 		if (searchSchoolName) {
 			const data = await searchSchool(searchSchoolName);
+
 			setSchools(data);
 		}
 	};
