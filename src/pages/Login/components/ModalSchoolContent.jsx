@@ -34,17 +34,10 @@ const ModalSchoolContent = () => {
 
 	const handleSearchResult = async () => {
 		if (searchSchoolName) {
-			setSearchBtn(true);
 			const data = await searchSchool(searchSchoolName);
-			console.log(`검색 결과 result : ${data}`);
-
 			setSchools(data);
 		}
 	};
-
-	useEffect(() => {
-		handleSearchResult();
-	}, [searchBtn]);
 
 	const selectSchool = (idx) => {
 		setName({ ...name, school: schools[idx].name, schoolId: schools[idx].id });
