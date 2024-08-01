@@ -10,5 +10,5 @@ export const searchSchool = async (inputName) => {
 };
 
 export const submitUserInfo = async (userInfoBody) => {
-	return await API.post('/users', userInfoBody);
+	return await API.post('/user', userInfoBody);
 };

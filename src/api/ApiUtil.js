@@ -1,5 +1,5 @@
 export const getAccessToken = () => {
-	return sessionStorage.getItem('Authorization');
+	return sessionStorage.getItem('accessToken');
 };
 
 export const getRefreshToken = () => {
