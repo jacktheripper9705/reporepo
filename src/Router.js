@@ -15,6 +15,7 @@ import PostInfo from './pages/PostInfo/PostInfo';
 import Select from './pages/Select/Select';
 import Review from './pages/Review/Review';
 import UnAuthorized from './pages/UnAuthorized/UnAuthorized';
+import KakaoRedirect from './pages/Login/kakao/KakaoRedirect';
 
 const Router = () => {
 	return (
@@ -23,6 +24,7 @@ const Router = () => {
 
 			<Route path="/login" element={<Login />} />
 			<Route path="/login/userinfo" element={<UserInfo />} />
+			<Route path="/authkakao" element={<KakaoRedirect />} />
 
 			<Route path="/mylists" element={<MyLists />} />
 			<Route path="/mylists/:postId" element={<PostInfo />} />
