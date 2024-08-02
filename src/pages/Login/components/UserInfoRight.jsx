@@ -21,12 +21,9 @@ const UserInfoRight = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log({ name: name.username, universityId: name.schoolId });
 		const data = await submitUserInfo({ name: name.username, universityId: name.schoolId });
 		if (data) {
 			navigate('/');
-		} else {
-			navigate('/post');
 		}
 	};
 
