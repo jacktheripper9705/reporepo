@@ -1,3 +1,4 @@
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import Question from './Question';
 import QuestionInputBox from './QuestionInputBox';
 
@@ -31,7 +32,17 @@ const QuestionGeo = () => {
 						<QuestionInputBox img={q.img} type={q.type} />
 					</div>
 					{idx === 0 ? (
-						<div className="w-full h-[192px] border border-black mb-[3vh]">지도 들어갈 부분</div>
+						<div id="map" className="w-full h-[192px] border border-black mb-[3vh]">
+							<Map
+								center={{ lat: 37.506320759000715, lng: 127.05368251210247 }}
+								className="w-full h-full"
+							>
+								<MapMarker
+									style={{ border: 'tranparent' }}
+									position={{ lat: 37.506320759000715, lng: 127.05368251210247 }}
+								/>
+							</Map>
+						</div>
 					) : null}
 				</div>
 			))}
