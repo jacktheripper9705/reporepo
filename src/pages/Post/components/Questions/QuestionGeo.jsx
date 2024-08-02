@@ -38,7 +38,7 @@ const QuestionGeo = () => {
 						{idx === 0 ? <GeoSearchInput /> : <QuestionInputBox img={q.img} type={q.type} />}
 					</div>
 					{idx === 0 ? (
-						<div id="map" className="w-full h-[192px] mb-[3vh]">
+						<div id="map" className="w-full h-[192px] mb-[3vh] flex justify-center items-center">
 							{geolocation.loaded ? (
 								<Map
 									center={{
@@ -56,7 +56,7 @@ const QuestionGeo = () => {
 									/>
 								</Map>
 							) : (
-								<p>지도를 로드 중입니다.</p>
+								<p>지도를 로드 중입니다...</p>
 							)}
 						</div>
 					) : null}
