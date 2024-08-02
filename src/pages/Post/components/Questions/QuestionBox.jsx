@@ -20,7 +20,7 @@ const QuestionBox = ({ page }) => {
 			question: '모집 인원을 입력해주세요',
 			img: '/img/postsub3.svg',
 			type: 'number',
-			info: 'person', // api 명세서 보고 이름 바꾸기
+			info: 'people', // api 명세서 보고 이름 바꾸기
 		},
 	];
 
@@ -28,7 +28,7 @@ const QuestionBox = ({ page }) => {
 		{
 			question: '인터뷰 예상 소요시간은 얼마나 걸리나요?',
 			img: '/img/postsub4.svg',
-			type: 'number',
+			type: 'multiToggle',
 			info: 'duration',
 		},
 		{

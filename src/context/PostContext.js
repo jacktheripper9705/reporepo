@@ -13,11 +13,11 @@ export const PostProvider = ({ children }) => {
 		requirements: null,
 		contactlink: null,
 		surveylink: null,
-		startdate: null,
-		enddate: null,
-		duration: null,
+		startdate: '2023-08-01',
+		enddate: '2023-08-31',
+		duration: 'Hour1',
 		universityId: null,
-		universityName: null,
+		people: null,
 	});
 
 	return <PostContext.Provider value={{ postData, setPostData }}>{children}</PostContext.Provider>;

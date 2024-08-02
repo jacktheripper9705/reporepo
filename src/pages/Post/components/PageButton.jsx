@@ -1,16 +1,29 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModalPostComplete from './ModalPostComplete';
 import PostModal from '../../../components/common/PostModal';
+import { submitPosts } from '../api/PostApi';
+import { PostContext } from '../../../context/PostContext';
 
 const PageButton = ({ page, text, className }) => {
 	const buttonClass = clsx('py-2 w-[429px] rounded-3xl text-white', className);
 
 	const [isOpen, setIsOpen] = useState(false);
 
-	const handleModalOpen = () => {
-		setIsOpen(true);
+	const { postData, setPostData } = useContext(PostContext);
+
+	const handleModalOpen = async (e) => {
+		e.preventDefault();
+		const data = await submitPosts({
+			...postData,
+			location_latitude: +postData.location_latitude,
+			location_longitude: +postData.location_longitude,
+			people: +postData.people,
+		});
+		if (data) {
+			setIsOpen(true);
+		}
 	};
 
 	return (
