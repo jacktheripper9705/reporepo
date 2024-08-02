@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-const ModalPostComplete = ({ modalState, setModalState }) => {
+const ModalPostComplete = ({ isOpen, setIsOpen }) => {
 	const handleClose = () => {
-		setModalState(!modalState);
+		setIsOpen(!isOpen);
 	};
 	return (
 		<>

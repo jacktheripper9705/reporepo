@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import MapSearchBox from './MapSearchBox';
 import fetchSearchLocation from './fetchSearchlocation';
+import { useRecoilState } from 'recoil';
+import { GeoInfo } from '../../../../stores/atoms/GeoInfo';
 
 const GeoSearchInput = () => {
 	const [searchName, setSearchName] = useState('');
 	const [searchResults, setSearchResults] = useState([]);
 	const [boxState, setBoxState] = useState(false);
-	const [selectName, setSelectName] = useState('');
+
+	const [geoInfo, setGeoInfo] = useRecoilState(GeoInfo);
 
 	const handleSearch = (e) => {
-		setSelectName('');
+		setGeoInfo({ ...geoInfo, locationName: '' });
 		setSearchName(e.target.value);
 	};
 
@@ -34,10 +37,13 @@ const GeoSearchInput = () => {
 		}
 	}, [searchResults]);
 
-	const handleLocationSelect = (name) => {
+	const handleLocationSelect = (name, x, y) => {
 		setBoxState(false);
-		setSelectName(name);
+
+		setGeoInfo({ ...geoInfo, locationName: name, location_latitude: y, location_longitude: x });
 	};
+
+	console.log(geoInfo);
 
 	return (
 		<div className="flex flex-col relative">
@@ -46,7 +52,7 @@ const GeoSearchInput = () => {
 					type="text"
 					className="border border-[#999999] w-full focus:outline-none px-2 rounded-l-lg"
 					onChange={handleSearch}
-					value={selectName ? selectName : searchName}
+					value={geoInfo.locationName ? geoInfo.locationName : searchName}
 				/>
 				<img src="/img/search_white.svg" className="p-2 rounded-r-lg bg-Blue-300 cursor-pointer" />
 			</div>
@@ -56,7 +62,7 @@ const GeoSearchInput = () => {
 					{searchResults.map((location, idx) => (
 						<div
 							className="w-[94%] h-[33%] min-h-[85px] hover:bg-Blue-100/75 cursor-pointer z-40"
-							onClick={() => handleLocationSelect(location.place_name)}
+							onClick={() => handleLocationSelect(location.place_name, location.x, location.y)}
 						>
 							<MapSearchBox
 								key={idx}

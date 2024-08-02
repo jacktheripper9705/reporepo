@@ -1,9 +1,18 @@
+import { useContext } from 'react';
 import PageButton from './components/PageButton';
 import PostTitle from './components/PostTitle';
 import Question from './components/Questions/Question';
 import QuestionBox from './components/Questions/QuestionBox';
+import { PostContext } from '../../context/PostContext';
 
 const Post = () => {
+	const { postData, setPostData } = useContext(PostContext);
+
+	const handleInputChange = (e) => {
+		const { value } = e.target;
+		setPostData((prev) => ({ ...prev, requirements: value }));
+	};
+
 	return (
 		<>
 			<div className="relative pt-[100px] px-[8vw] h-[calc(100vh-72px)] z-10">
@@ -23,7 +32,11 @@ const Post = () => {
 								</p>
 							</div>
 							<div className="h-[40vh] mt-[2vh] border rounded-lg">
-								<textarea className="w-full h-full outline-none rounded-lg p-3 resize-none" />
+								<textarea
+									className="w-full h-full outline-none rounded-lg p-3 resize-none"
+									onChange={handleInputChange}
+									value={postData.requirements}
+								/>
 							</div>
 						</div>
 					</div>
