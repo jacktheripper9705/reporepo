@@ -1,6 +1,10 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
+
+import useGeoLocation from '../../../../hook/useGeolocation';
+
 import Question from './Question';
 import QuestionInputBox from './QuestionInputBox';
+import GeoSearchInput from './GeoSearchInput';
 
 const QuestionGeo = () => {
 	let questions = [
@@ -10,7 +14,7 @@ const QuestionGeo = () => {
 			type: 'text',
 		},
 		{
-			question: '설문조사 링크를 입력해주세요(선택사항)',
+			question: '설문조사 링크를 입력해주세요 (선택사항)',
 			img: '/img/postsub8.svg',
 			type: 'text',
 		},
@@ -21,27 +25,39 @@ const QuestionGeo = () => {
 		},
 	];
 
+	const geolocation = useGeoLocation();
+
 	return (
 		<div className="px-[10%] w-full h-full">
 			{questions.map((q, idx) => (
 				<div key={idx} className="flex flex-col justify-center">
 					<Question question={q.question} />
 					<div
-						className={`w-full border border-x-0 border-t-0 border-b-2 border-black mt-2 ${idx === 0 ? 'mb-[1vh]' : 'mb-[3vh]'} py-2 px-1`}
+						className={`w-full ${idx === 0 ? 'mb-[1vh] mt-3' : 'mb-[3vh] border border-x-0 border-t-0 border-b-2 border-black py-2 px-1 mt-2'} `}
 					>
-						<QuestionInputBox img={q.img} type={q.type} />
+						{idx === 0 ? <GeoSearchInput /> : <QuestionInputBox img={q.img} type={q.type} />}
 					</div>
 					{idx === 0 ? (
-						<div id="map" className="w-full h-[192px] border border-black mb-[3vh]">
-							<Map
-								center={{ lat: 37.506320759000715, lng: 127.05368251210247 }}
-								className="w-full h-full"
-							>
-								<MapMarker
-									style={{ border: 'tranparent' }}
-									position={{ lat: 37.506320759000715, lng: 127.05368251210247 }}
-								/>
-							</Map>
+						<div id="map" className="w-full h-[192px] mb-[3vh]">
+							{geolocation.loaded ? (
+								<Map
+									center={{
+										lat: `${geolocation.coordinates.lat}`,
+										lng: `${geolocation.coordinates.lng}`,
+									}}
+									className="w-full h-full"
+								>
+									<MapMarker
+										style={{ border: 'tranparent' }}
+										position={{
+											lat: `${geolocation.coordinates.lat}`,
+											lng: `${geolocation.coordinates.lng}`,
+										}}
+									/>
+								</Map>
+							) : (
+								<p>지도를 로드 중입니다.</p>
+							)}
 						</div>
 					) : null}
 				</div>
