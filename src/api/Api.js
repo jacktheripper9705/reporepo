@@ -16,7 +16,7 @@ instance.interceptors.request.use(
 		}
 
 		config.headers['Content-Type'] = 'application/json';
-		config.headers['Authorization'] = `Bearer ${accessToken}`;
+		config.headers['accessToken'] = `${accessToken}`;
 
 		return config;
 	},
