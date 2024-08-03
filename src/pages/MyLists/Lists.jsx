@@ -2,36 +2,24 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Lists = ({ status, title, duration, startDate, endDate }) => {
-	const url = '';
+const Lists = ({ key, title, duration, startDate, endDate }) => {
+	const today = new Date(); // 현재 날짜 가져오기
+	const formattedDate = `${today.getFullYear() - 1}-${today.getMonth() >= 10 ? '' : '0'}${today.getMonth() + 1}-${today.getDate() >= 10 ? '' : '0'}${today.getDate()}`; // 날짜를 원하는 형식으로 교체
+	const [status, setStatus] = useState(false);
 
-	// const showStatus = () => {};
+	const compareDate = (startDate, endDate) => {
+		// 날짜를 비교해서 '진행중', '마감'을 표시
+		if ((formattedDate >= startDate) & (formattedDate <= endDate)) {
+			setStatus(true);
+		} else {
+			setStatus(false);
+		}
+	};
 
-	// const showTitle = () => {
-	// 	axios
-	// 		.get(url)
-	// 		.then((res) => {
-	// 			// 성공한 경우
-	// 			setTitle(res.data);
-	// 			console.log('상태 가져오기 완료 : ', title);
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log('에러 : ', err);
-	// 		});
-	// };
-
-	// const showDuration = () => {
-	// 	axios
-	// 		.get(url)
-	// 		.then((res) => {
-	// 			// 성공한 경우
-	// 			setDuration(res.data);
-	// 			console.log('상태 가져오기 완료 : ', duration);
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log('에러 : ', err);
-	// 		});
-	// };
+	useEffect(() => {
+		compareDate(startDate, endDate);
+		console.log(formattedDate);
+	}, []);
 
 	return (
 		<div className={`p-5`}>
@@ -51,7 +39,9 @@ const Lists = ({ status, title, duration, startDate, endDate }) => {
 					</h3>
 					<p className="text-sm mt-2 font-pretendardLight text-gray-400">
 						모집 기간 {'('}
-						{duration}
+						{startDate.substr(5)}
+						{'~'}
+						{endDate.substr(5)}
 						{')'}
 					</p>
 				</div>

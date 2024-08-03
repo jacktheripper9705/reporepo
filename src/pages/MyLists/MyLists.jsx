@@ -1,12 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import Lists from './Lists';
+import axios from 'axios';
 
 const MyLists = () => {
-	const [post, setPost] = useState([]);
 	const [status, setStatus] = useState(false);
 	const [title, setTitle] = useState('인터뷰/실험 글 제목');
 	const [duration, setDuration] = useState('7/29 ~ 8/9');
+	const [posts, setPosts] = useState([]);
+	const apiUrl = 'http://43.203.223.215:8080';
+
+	const fetchData = async () => {
+		try {
+			const response = await axios.get(apiUrl + '/posts');
+			setPosts(response.data);
+			console.log(response.data);
+		} catch (error) {
+			console.log('Error fetching data:', error);
+		}
+	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
 
 	return (
 		<div className="container px-[8vw] py-10">
@@ -15,12 +31,18 @@ const MyLists = () => {
 				<p className="ml-2 text-2xl font-pretendardSemibold">작성한 글 LIST</p>
 			</div>
 			<div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-y-auto max-h-[600px]">
-				<Lists status={true} title={'안구 측정기를 활용한 문장 읽기 과정 측정'} duration={'8/6 ~ 8/12'} />
-				<Lists
-					status={true}
-					title={'긴급상황 시 자율주행 차량 후면 디스플레이 위치 평가'}
-					duration={'8/5 ~ 8/19'}
-				/>
+				{posts.map((post) => (
+					<Lists
+						key={post.id}
+						title={post.title}
+						duration={post.duration}
+						startDate={post.startdate}
+						endDate={post.enddate}
+					/>
+				))}
+				<Lists title={'안녕'} startDate={'2024-07-21'} endDate={'2024-08-03'} />
+				{/* <Lists status={true} title={'안구 측정기를 활용한 문장 읽기 과정 측정'} duration={'8/6 ~ 8/12'} />
+				<Lists status={true} title={posts.data.title} duration={'8/5 ~ 8/19'} />
 				<Lists status={true} title={'만성 발목 불안정성의 동적 자세 조절력 파악'} duration={'7/26 ~ 8/24'} />
 				<Lists
 					status={false}
@@ -43,7 +65,7 @@ const MyLists = () => {
 				<Lists />
 				<Lists />
 				<Lists />
-				<Lists />
+				<Lists /> */}
 			</div>
 		</div>
 	);

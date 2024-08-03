@@ -4,11 +4,22 @@ import EachHelp from './EachHelp';
 import axios from 'axios';
 
 const Applicants = () => {
-	const [posts, setPosts] = useState([]);
+	const [status, setStatus] = useState([]);
 
-	// useEffect(async () => {
-	// 	const response = await axios.get('');
-	// });
+	// 데이터를 가져오는 비동기 함수
+	const fetchData = async () => {
+		try {
+			const response = await axios.get('');
+			setStatus(response.data);
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	};
+
+	// 컴포넌트가 마운트될 때 fetchData 함수를 호출
+	useEffect(() => {
+		fetchData();
+	}, []);
 
 	return (
 		<div className="px-[8vw] container">
@@ -20,16 +31,24 @@ const Applicants = () => {
 				<div className="mx-10 border-4 rounded-xl bg-white py-10 px-2.5">
 					<div className="flex items-center border-b-2 pb-4 mb-14">
 						<img className="mx-4 w-8 h-8" src="/img/eachHelpIcon.svg" alt="help icon image" />
-						<p className="font-pretendardMedium text-2xl ">서로 돕기</p>
+						<p className="font-pretendardMedium text-2xl">서로 돕기</p>
 					</div>
-					<EachHelp initialState="confirm" />
+					<EachHelp initialState="accept" />
 					<EachHelp initialState="accept" />
 					<EachHelp initialState="suggestion" />
+					<div>
+						<h1>리뷰 목록</h1>
+						<ul>
+							{status.map((stauts) => (
+								<li key={status.id}>{stauts.name}</li>
+							))}
+						</ul>
+					</div>
 				</div>
 				<div className="mx-10 border-4 rounded-xl bg-white py-10 px-2.5">
 					<div className="flex items-center border-b-2 pb-4 mb-14">
 						<img className="mx-4 w-8 h-8" src="/img/applicantIcon.svg" alt="applicant icon image" />
-						<p className="font-pretendardSemibold text-2xl ">지원자</p>
+						<p className="font-pretendardSemibold text-2xl">지원자</p>
 					</div>
 					<Applicant initialState="confirm" />
 					<Applicant initialState="confirm" />
