@@ -8,6 +8,40 @@ const EachHelp = ({ initialState }) => {
 	const [checked, setChecked] = useState(false);
 	const [isTrustOpen, setIsTrustOpen] = useState(false);
 	const [isReviewOpen, setIsReviewOpen] = useState(false);
+	const [selectedTrustOptions, setSelectedTrustOptions] = useState({
+		// 신뢰도 평가 항목
+		option1: false,
+		option2: false,
+		option3: false,
+	});
+	const initialTrustOptions = {
+		// Modal이 닫힐때 ReviewCheck 값 초기화
+		option1: false,
+		option2: false,
+		option3: false,
+	};
+
+	const handleTrustOptionCheck = (option) => {
+		setSelectedTrustOptions((prevState) => ({
+			...prevState,
+			[option]: !prevState[option],
+		}));
+	};
+
+	const resetTrustOptions = () => {
+		setSelectedTrustOptions(initialTrustOptions); // ReviewCheck 초기화 함수
+		console.log(selectedTrustOptions);
+	};
+
+	const closeModal = () => {
+		resetTrustOptions();
+		openModal();
+	};
+
+	const handleModalCloseRequest = () => {
+		closeModal();
+		console.log('openModal');
+	};
 
 	const openModal = () => {
 		if (status === 'accept') {
@@ -36,6 +70,8 @@ const EachHelp = ({ initialState }) => {
 			setChecked(false);
 		}
 	};
+
+	const handleReviewCheck = () => {};
 
 	useEffect(() => {
 		switch (
@@ -91,9 +127,19 @@ const EachHelp = ({ initialState }) => {
 					contentLabel="Test ReviewModal"
 					className="bg-white rounded-2xl shadow-lg text-center justify-center"
 					overlayClassName="bg-black justify-center items-center flex fixed inset-0 bg-opacity-50"
+					onRequestClose={() => {
+						handleModalCloseRequest();
+					}}
+					shouldCloseOnOverlayClick={true}
 				>
 					<div onClick={handleContentClick} className="relative">
-						<button onClick={openModal} className="absolute text-3xl font-light right-4 top-2">
+						<button
+							onClick={() => {
+								openModal();
+								resetTrustOptions();
+							}}
+							className="absolute text-3xl font-light right-4 top-2"
+						>
 							&times;
 						</button>
 						<div className="ml-5 pt-5">
@@ -107,15 +153,33 @@ const EachHelp = ({ initialState }) => {
 							{/* Checkbox block */}
 							<div className="flex border-t-2 py-6 px-5">
 								<span>실험/인터뷰에 결석했나요?</span>
-								<img className="ml-auto" src="/img/uncheckbox.svg"></img>
+								<img
+									className="ml-auto"
+									onClick={() => {
+										handleTrustOptionCheck('option1');
+									}}
+									src={selectedTrustOptions.option1 ? '/img/checkbox.svg' : '/img/uncheckbox.svg'}
+								></img>
 							</div>
 							<div className="flex border-t-2 py-6 px-5">
 								<span>실험/인터뷰에 지각했나요?</span>
-								<img className="ml-auto" src="/img/uncheckbox.svg"></img>
+								<img
+									className="ml-auto"
+									onClick={() => {
+										handleTrustOptionCheck('option2');
+									}}
+									src={selectedTrustOptions.option2 ? '/img/checkbox.svg' : '/img/uncheckbox.svg'}
+								></img>
 							</div>
 							<div className="flex border-y-2 py-6 px-5">
 								<span>결석 X, 지각 X</span>
-								<img className="ml-auto" src="/img/checkbox.svg"></img>
+								<img
+									className="ml-auto"
+									onClick={() => {
+										handleTrustOptionCheck('option3');
+									}}
+									src={selectedTrustOptions.option3 ? '/img/checkbox.svg' : '/img/uncheckbox.svg'}
+								></img>
 							</div>
 							<button className="rounded-full bg-[#2563FF] px-5 py-3 font-pretendardMedium text-white flex ml-auto mr-3 my-5">
 								제출하기

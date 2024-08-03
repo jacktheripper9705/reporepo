@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Applicant from './Applicant';
 import EachHelp from './EachHelp';
+import axios from 'axios';
 
 const Applicants = () => {
+	const [posts, setPosts] = useState([]);
+
+	// useEffect(async () => {
+	// 	const response = await axios.get('');
+	// });
+
 	return (
-		<div className="w-full px-[8vw] py-[6vh]">
+		<div className="px-[8vw] container">
 			<div className="flex ml-11">
 				<img src="/img/fileDockSearch.svg" alt="file dock search image" />
 				<div className="font-pretendardMedium text-3xl ml-3">지원자 List</div>
