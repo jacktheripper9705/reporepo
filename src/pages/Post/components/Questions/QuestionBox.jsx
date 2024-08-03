@@ -1,5 +1,6 @@
 import Question from './Question';
 import QuestionInputBox from './QuestionInputBox';
+import QuestionMultiToggle from './QuestionMultiToggle';
 import QuestionRadio from './QuestionRadio';
 
 const QuestionBox = ({ page }) => {
@@ -64,9 +65,15 @@ const QuestionBox = ({ page }) => {
 					{questions2.map((q, idx) => (
 						<div key={idx} className="flex flex-col justify-center h-[33.3%]">
 							<Question question={q.question} />
-							<div className="w-full border border-x-0 border-t-0 border-b-2 border-black mt-2 mb-[3vh] py-2 px-1">
-								<QuestionInputBox img={q.img} type={q.type} info={q.info} />
-							</div>
+							{q.type === 'multiToggle' ? (
+								<div className="w-full mt-2 mb-[3vh] py-2 px-1">
+									<QuestionMultiToggle />
+								</div>
+							) : (
+								<div className="w-full border border-x-0 border-t-0 border-b-2 border-black mt-2 mb-[3vh] py-2 px-1">
+									<QuestionInputBox img={q.img} type={q.type} info={q.info} />
+								</div>
+							)}
 						</div>
 					))}
 				</div>
