@@ -9,7 +9,7 @@ const MyLists = () => {
 	const [duration, setDuration] = useState('7/29 ~ 8/9');
 
 	return (
-		<div className="px-[8vw] py-10">
+		<div className="container px-[8vw] py-10">
 			<div className="ml-4 flex flex-wrap pt-14">
 				<img src="/img/bookCheck.svg" alt="글 List 이미지" />
 				<p className="ml-2 text-2xl font-pretendardSemibold">작성한 글 LIST</p>

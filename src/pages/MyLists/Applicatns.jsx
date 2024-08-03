@@ -4,7 +4,7 @@ import EachHelp from './EachHelp';
 
 const Applicants = () => {
 	return (
-		<div className="w-full px-[8vw]">
+		<div className="w-full px-[8vw] py-[6vh]">
 			<div className="flex ml-11">
 				<img src="/img/fileDockSearch.svg" alt="file dock search image" />
 				<div className="font-pretendardMedium text-3xl ml-3">지원자 List</div>
