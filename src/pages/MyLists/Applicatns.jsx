@@ -9,7 +9,7 @@ const Applicants = () => {
 	// 데이터를 가져오는 비동기 함수
 	const fetchData = async () => {
 		try {
-			const response = await axios.get('');
+			const response = await axios.get('/search');
 			setStatus(response.data);
 		} catch (error) {
 			console.error('Error fetching data:', error);
@@ -36,14 +36,6 @@ const Applicants = () => {
 					<EachHelp initialState="accept" />
 					<EachHelp initialState="accept" />
 					<EachHelp initialState="suggestion" />
-					<div>
-						<h1>리뷰 목록</h1>
-						<ul>
-							{status.map((stauts) => (
-								<li key={status.id}>{stauts.name}</li>
-							))}
-						</ul>
-					</div>
 				</div>
 				<div className="mx-10 border-4 rounded-xl bg-white py-10 px-2.5">
 					<div className="flex items-center border-b-2 pb-4 mb-14">

@@ -8,7 +8,7 @@ const MyLists = () => {
 	const [title, setTitle] = useState('인터뷰/실험 글 제목');
 	const [duration, setDuration] = useState('7/29 ~ 8/9');
 	const [posts, setPosts] = useState([]);
-	const apiUrl = 'http://43.203.223.215:8080';
+	const apiUrl = '';
 
 	const fetchData = async () => {
 		try {
@@ -40,7 +40,7 @@ const MyLists = () => {
 						endDate={post.enddate}
 					/>
 				))}
-				<Lists title={'안녕'} startDate={'2024-07-21'} endDate={'2024-08-03'} />
+				<Lists title={'안녕'} startDate={'2023-07-21'} endDate={'2023-08-03'} />
 				{/* <Lists status={true} title={'안구 측정기를 활용한 문장 읽기 과정 측정'} duration={'8/6 ~ 8/12'} />
 				<Lists status={true} title={posts.data.title} duration={'8/5 ~ 8/19'} />
 				<Lists status={true} title={'만성 발목 불안정성의 동적 자세 조절력 파악'} duration={'7/26 ~ 8/24'} />
