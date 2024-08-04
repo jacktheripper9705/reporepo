@@ -4,7 +4,9 @@ import EachHelp from './EachHelp';
 import axios from 'axios';
 
 const Applicants = () => {
-	const [status, setStatus] = useState([]);
+	const [applications, setApplications] = useState([]);
+	const { postId } = useParams();
+	const apiUrl = '';
 
 	// 데이터를 가져오는 비동기 함수
 	const fetchData = async () => {
