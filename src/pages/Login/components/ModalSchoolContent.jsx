@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { schoolList } from '../../../stores/atoms/searchSchoolName';
 import { userInfo } from '../../../stores/atoms/selectedUserInfo';
 import { initialSchools, searchSchool } from '../api/LoginApi';
 import { modalState } from '../../../stores/atoms/modalState';
+import { PostContext } from '../../../context/PostContext';
 
 const ModalSchoolContent = () => {
 	const [schools, setSchools] = useRecoilState(schoolList);
@@ -11,6 +12,8 @@ const ModalSchoolContent = () => {
 	const [, setIsOpen] = useRecoilState(modalState);
 	const [isLoading, setIsLoading] = useState(true);
 	const [searchSchoolName, setSearchSchoolName] = useState('');
+
+	const { postData, setPostData } = useContext(PostContext);
 
 	const handleSearchName = (e) => {
 		setSearchSchoolName(e.target.value);
@@ -41,6 +44,7 @@ const ModalSchoolContent = () => {
 
 	const selectSchool = (idx) => {
 		setName({ ...name, school: schools[idx].name, schoolId: schools[idx].id });
+		setPostData((prev) => ({ ...prev, universityId: schools[idx].id }));
 		console.log('click');
 		setIsOpen(false);
 	};

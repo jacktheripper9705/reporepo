@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-	// let token = undefined;
-	let token = 'token';
+	const [token, setToken] = useState(sessionStorage.getItem('accessToken'));
+
+	useEffect(() => {
+		setToken(sessionStorage.getItem('accessToken'));
+	}, [token]);
+
+	const delToken = () => {
+		sessionStorage.removeItem('accessToken');
+		token = undefined;
+	};
 
 	return (
 		<div className={`h-[72px] absolute top-0 flex justify-between px-[8vw] items-center w-full bg-[#f5f5f5] z-20`}>
@@ -31,9 +39,15 @@ const Navbar = () => {
 						<img src="/img/navbarLine.svg" />
 					</>
 				)}
-				<Link to="/login" className="bg-Blue-200 py-2 px-4 rounded-3xl text-white">
-					{token ? '로그아웃' : '로그인'}
-				</Link>
+				{token ? (
+					<Link to="/login" className="bg-Blue-200 py-2 px-4 rounded-3xl text-white" onClick={delToken}>
+						로그아웃
+					</Link>
+				) : (
+					<Link to="/login" className="bg-Blue-200 py-2 px-4 rounded-3xl text-white">
+						로그인
+					</Link>
+				)}
 			</div>
 		</div>
 	);

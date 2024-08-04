@@ -1,23 +1,30 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import Question from './Question';
+import { PostContext } from '../../../../context/PostContext';
 
 const QuestionRadio = () => {
+	const { postData, setPostData } = useContext(PostContext);
+
 	const activeBtn = clsx('py-2 px-4 bg-Blue-200 rounded-lg text-white');
 	const deActiveBtn = clsx('py-2 px-4 rounded-lg border-2 border-black');
 
-	const [faceBtn, setFaceBtn] = useState(true);
-	const [nonFacingBtn, setNonFacingBtn] = useState(false);
+	const [faceBtn, setFaceBtn] = useState(postData.isUntact);
+	const [nonFacingBtn, setNonFacingBtn] = useState(!postData.isUntact);
 
 	const handleFaceClick = () => {
 		setFaceBtn(true);
 		setNonFacingBtn(false);
+
+		setPostData((prev) => ({ ...prev, isUntact: true }));
 	};
 
 	const handleNonFacingClick = () => {
 		setFaceBtn(false);
 		setNonFacingBtn(true);
+
+		setPostData((prev) => ({ ...prev, isUntact: false }));
 	};
 
 	return (

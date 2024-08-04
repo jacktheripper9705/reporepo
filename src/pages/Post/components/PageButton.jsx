@@ -1,22 +1,36 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Modal from '../../../components/common/Modal';
 import ModalPostComplete from './ModalPostComplete';
+import PostModal from '../../../components/common/PostModal';
+import { submitPosts } from '../api/PostApi';
+import { PostContext } from '../../../context/PostContext';
 
 const PageButton = ({ page, text, className }) => {
 	const buttonClass = clsx('py-2 w-[429px] rounded-3xl text-white', className);
-	const [modalState, setModalState] = useState(false);
 
-	const handleModalOpen = () => {
-		setModalState(true);
+	const [isOpen, setIsOpen] = useState(false);
+
+	const { postData, setPostData } = useContext(PostContext);
+
+	const handleModalOpen = async (e) => {
+		e.preventDefault();
+		const data = await submitPosts({
+			...postData,
+			location_latitude: +postData.location_latitude,
+			location_longitude: +postData.location_longitude,
+			people: +postData.people,
+		});
+		if (data) {
+			setIsOpen(true);
+		}
 	};
 
 	return (
 		<div className="flex flex-col justify-center items-center mt-[21px]">
-			<Modal modalState={modalState} setModalState={setModalState}>
-				<ModalPostComplete modalState={modalState} setModalState={setModalState} />
-			</Modal>
+			<PostModal isOpen={isOpen} setIsOpen={setIsOpen}>
+				<ModalPostComplete isOpen={isOpen} setIsOpen={setIsOpen} />
+			</PostModal>
 			<p className="text-[#999999] mb-[15px] text-[13px]">{page}</p>
 			{page === '1 / 2' ? (
 				<Link to="/post/detail">
