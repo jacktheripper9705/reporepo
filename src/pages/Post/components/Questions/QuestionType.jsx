@@ -1,4 +1,3 @@
-import SingleInputDateRangePicker from '../../../../components/common/DateRangePicker';
 import RangeCalendarComponent from '../../../../components/common/RangeCalendarComponent';
 import { useContext } from 'react';
 

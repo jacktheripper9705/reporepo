@@ -6,10 +6,10 @@ import { PostContext } from '../../context/PostContext';
 const { RangePicker } = DatePicker;
 
 const RangeCalendarComponent = () => {
+	const { postData, setPostData } = useContext(PostContext);
+
 	const [dates, setDates] = useState([null, null]);
 	const [formattedDates, setFormattedDates] = useState([null, null]);
-
-	const { postData, setPostData } = useContext(PostContext);
 
 	useEffect(() => {
 		setPostData((prev) => ({ ...prev, startdate: formattedDates[0], enddate: formattedDates[1] }));
