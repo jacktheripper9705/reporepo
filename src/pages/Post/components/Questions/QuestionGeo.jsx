@@ -11,6 +11,8 @@ import { GeoInfo } from '../../../../stores/atoms/GeoInfo';
 import { useContext, useEffect } from 'react';
 import { PostContext } from '../../../../context/PostContext';
 
+import { Spin } from 'antd';
+
 const QuestionGeo = () => {
 	let questions = [
 		{
@@ -86,7 +88,7 @@ const QuestionGeo = () => {
 									/>
 								</Map>
 							) : (
-								<p>지도를 로드 중입니다...</p>
+								<Spin />
 							)}
 						</div>
 					) : null}
