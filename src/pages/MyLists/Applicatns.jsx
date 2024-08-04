@@ -4,24 +4,24 @@ import EachHelp from './EachHelp';
 import axios from 'axios';
 
 const Applicants = () => {
-	const [applications, setApplications] = useState([]);
-	const { postId } = useParams();
-	const apiUrl = '';
+	// const [applications, setApplications] = useState([]);
+	// const { postId } = useParams();
+	// const apiUrl = '';
 
-	// 데이터를 가져오는 비동기 함수
-	const fetchData = async () => {
-		try {
-			const response = await axios.get('/search');
-			setStatus(response.data);
-		} catch (error) {
-			console.error('Error fetching data:', error);
-		}
-	};
+	// // 데이터를 가져오는 비동기 함수
+	// const fetchData = async () => {
+	// 	try {
+	// 		const response = await axios.get('/search');
+	// 		setStatus(response.data);
+	// 	} catch (error) {
+	// 		console.error('Error fetching data:', error);
+	// 	}
+	// };
 
-	// 컴포넌트가 마운트될 때 fetchData 함수를 호출
-	useEffect(() => {
-		fetchData();
-	}, []);
+	// // 컴포넌트가 마운트될 때 fetchData 함수를 호출
+	// useEffect(() => {
+	// 	fetchData();
+	// }, []);
 
 	return (
 		<div className="px-[8vw] container">
