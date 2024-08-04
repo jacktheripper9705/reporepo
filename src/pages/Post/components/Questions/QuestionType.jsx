@@ -1,4 +1,5 @@
 import SingleInputDateRangePicker from '../../../../components/common/DateRangePicker';
+import RangeCalendarComponent from '../../../../components/common/RangeCalendarComponent';
 import { useContext } from 'react';
 
 import { PostContext } from '../../../../context/PostContext';
@@ -25,7 +26,8 @@ const QuestionType = ({ type, info }) => {
 	return (
 		<>
 			{type === 'date' ? (
-				<SingleInputDateRangePicker />
+				// <SingleInputDateRangePicker />
+				<RangeCalendarComponent />
 			) : info === 'university' ? (
 				<input
 					type="text"
