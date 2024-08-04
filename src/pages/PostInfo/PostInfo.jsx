@@ -6,13 +6,11 @@ const PostInfo = () => {
 	const path = location.pathname;
 
 	const isMyLists = path.startsWith('/mylists');
-	const isApplies = path.startsWith('/applies');
 	const isPosts = path.startsWith('/posts');
 
 	return (
 		<>
 			{isMyLists && <PostView btn1="수정하기" btn2="삭제하기" />}
-			{isApplies && <PostView />}
 			{isPosts && <PostView btn1="서로 도와주기" btn2="지원하기" />}
 		</>
 	);

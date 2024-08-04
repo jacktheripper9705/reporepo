@@ -18,6 +18,7 @@ import UnAuthorized from './pages/UnAuthorized/UnAuthorized';
 import KakaoRedirect from './pages/Login/kakao/KakaoRedirect';
 
 import { PostProvider } from './context/PostContext';
+import AppliesInfo from './pages/Applies/AppliesInfo';
 
 const Router = () => {
 	return (
@@ -34,7 +35,7 @@ const Router = () => {
 				<Route path="/mylists/:postId/applicants" element={<Applicants />} />
 
 				<Route path="/applies" element={<Applies />} />
-				<Route path="/applies/:postId" element={<PostInfo />} />
+				<Route path="/applies/:postId" element={<AppliesInfo />} />
 
 				<Route path="/posts/:postid" element={<PostInfo />} />
 
