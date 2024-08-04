@@ -10,7 +10,7 @@ import Navbar from './components/Layout/Navbar';
 function App() {
 	return (
 		<RecoilRoot>
-			<div className="App flex-col-template">
+			<div className="App">
 				<Navbar />
 				<Router />
 			</div>
