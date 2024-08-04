@@ -27,14 +27,9 @@ const Navbar = () => {
 							Home
 						</Link>
 						<img src="/img/navbarLine.svg" />
-						<Link to="/applicants" className="flex-template gap-2">
-							<img src="/img/navbarPar.svg" />
-							지원자 List
-						</Link>
-						<img src="/img/navbarLine.svg" />
 						<Link to="/mylists" className="flex-template gap-2">
-							<img src="/img/navbarPost.svg" />
-							작성한 글
+							<img src="/img/navbarPar.svg" />
+							지원자 List 및 작성한 글
 						</Link>
 						<img src="/img/navbarLine.svg" />
 					</>

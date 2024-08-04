@@ -16,7 +16,7 @@ const Post = () => {
 	return (
 		<>
 			<div className="relative pt-[100px] px-[8vw] h-[calc(100vh-72px)] z-10">
-				<PostTitle text="모집 글 작성학기" />
+				<PostTitle text="모집 글 작성하기" />
 				<div className="bg-white w-full h-[60vh] rounded-sm flex items-center relative z-10">
 					<div className="border w-[50%] h-[90%] border-y-0 border-l-0 border-r-1 border-[#999999]">
 						<QuestionBox page="1" />
