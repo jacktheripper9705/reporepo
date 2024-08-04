@@ -5,7 +5,7 @@ const PostView = ({ btn1, btn2 }) => {
 	return (
 		<>
 			<div className="relative pt-[100px] px-[8vw] h-[calc(100vh-72px)] z-10">
-				<PostTitle text="글 제목 들어갈 곳" />
+				<PostTitle text="글 제목 들어갈 곳" read={true} />
 				<div className="bg-white w-full h-[75vh] rounded-sm flex items-center relative z-10">
 					<div className="border w-[50%] h-[90%] border-y-0 border-l-0 border-r-1 border-[#999999]">
 						<CategoryBox position="left" />
