@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import NotFound from './pages/NotFound/NotFound';
 import Main from './pages/Main/Main';
@@ -28,14 +28,14 @@ const Router = () => {
 		<PostProvider>
 			<ReadProvider>
 				<Routes>
-					<Route path="/" element={<Main />} />
+					<Route path="/" element={<Navigate to="/landing" />} />
+					<Route path="/home" element={<Main />} />
 
 					<Route path="/login" element={<Login />} />
 					<Route path="/login/userinfo" element={<UserInfo />} />
 					<Route path="/authkakao" element={<KakaoRedirect />} />
 
 					<Route path="/mylists" element={<MyLists />} />
-					{/* <Route path="/mylists/:postid" element={<PostInfo />} /> */}
 					<Route path="/mylists/:postid/applicants" element={<Applicants />} />
 
 					<Route path="/applies" element={<Applies />} />

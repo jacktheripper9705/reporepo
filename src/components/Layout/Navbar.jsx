@@ -14,7 +14,7 @@ const Navbar = () => {
 	};
 
 	const refreshSite = () => {
-		window.location.href = '/';
+		window.location.href = '/home';
 	};
 
 	return (
@@ -24,7 +24,7 @@ const Navbar = () => {
 			<div className="flex-template gap-5 text-Blue-400 text-[13px]">
 				{token && (
 					<>
-						<Link to="/" className="flex-template gap-2">
+						<Link to="/home" className="flex-template gap-2">
 							<img src="/img/navbarHome.svg" />
 							Home
 						</Link>
