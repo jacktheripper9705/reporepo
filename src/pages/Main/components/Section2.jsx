@@ -3,7 +3,7 @@ import SearchSchool from './SearchSchool';
 
 const Section2 = () => {
 	return (
-		<div className="w-[50%] h-full border flex flex-col gap-[20px]">
+		<div className="w-[50%] h-full flex flex-col gap-[20px]">
 			<SearchSchool />
 			<SchoolInfoBox />
 		</div>
