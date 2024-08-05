@@ -2,13 +2,13 @@ import clsx from 'clsx';
 
 const GonggangBox = () => {
 	const durationSet = [
-		{ duration: 'Min15', name: '15분 이내', bg: 'bg-purple-300' },
+		{ duration: 'Min15', name: '15분 이내', bg: 'bg-[#2563FF] bg-opacity-50' },
 		{ duration: 'Min30', name: '30분 이내', bg: 'bg-[#10C7F9] bg-opacity-50' },
-		{ duration: 'Hour1', name: '1시간 이내', bg: 'bg-[#E0F8FF] bg-opacity-70' },
-		{ duration: 'Hour2', name: '2시간 이내', bg: 'bg-[#E0F8FF] bg-opacity-30' },
-		{ duration: 'Over', name: '2시간 이상', bg: 'bg-[#E0F8FF] bg-opacity-10' },
+		{ duration: 'Hour1', name: '1시간 이내', bg: 'bg-[#10C7F9] bg-opacity-50' },
+		{ duration: 'Hour2', name: '2시간 이내', bg: 'bg-[#10C7F9] bg-opacity-30' },
+		{ duration: 'Over', name: '2시간 이상', bg: 'bg-[#10C7F9] bg-opacity-20' },
 	];
-	let duration = 'Over';
+	let duration = 'Hour1';
 	let title = '안구 측정기를 활용한 문장 읽기 과정 측정';
 	let location_name = '상상관';
 
@@ -21,7 +21,7 @@ const GonggangBox = () => {
 			<div className="flex flex-col justify-center items-center">
 				<div
 					className={clsx(
-						'rounded-full w-[81px] h-[81px] flex flex-col justify-center items-center my-[12px] drop-shadow-lg',
+						'rounded-full w-[81px] h-[81px] flex flex-col justify-center items-center my-[12px] drop-shadow-md',
 						matchingDuration.bg,
 					)}
 				>
