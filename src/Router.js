@@ -35,7 +35,7 @@ const Router = () => {
 					<Route path="/authkakao" element={<KakaoRedirect />} />
 
 					<Route path="/mylists" element={<MyLists />} />
-					<Route path="/mylists/:postid" element={<PostInfo />} />
+					{/* <Route path="/mylists/:postid" element={<PostInfo />} /> */}
 					<Route path="/mylists/:postid/applicants" element={<Applicants />} />
 
 					<Route path="/applies" element={<Applies />} />

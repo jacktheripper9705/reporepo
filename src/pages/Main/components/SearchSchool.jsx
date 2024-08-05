@@ -30,7 +30,6 @@ const SearchSchool = () => {
 				setUnivdata(null);
 			}
 		};
-
 		shcoolId && schoolPosts(shcoolId);
 	}, [setUnivdata, shcoolId]);
 
@@ -54,6 +53,12 @@ const SearchSchool = () => {
 		}
 	}, [searchResults, searchName]);
 
+	const handleSchoolSelect = (id, name) => {
+		setSearchName(name);
+		setScoolId(id);
+		setBoxState(false);
+	};
+
 	return (
 		<div className="w-full h-[204px] border flex gap-[42px] px-[25px] bg-white rounded-2xl pt-[25px]">
 			{univdata ? (
@@ -62,10 +67,11 @@ const SearchSchool = () => {
 					<div className="flex flex-col relative w-[75%]">
 						<div className="flex w-full h-[43px] relative">
 							<input
+								id="searchBox"
 								type="text"
 								className="border border-[#999999] w-full focus:outline-none px-2 rounded-l-lg"
 								onChange={handleSearch}
-								// value={geoInfo.locationName ? geoInfo.locationName : searchName}
+								value={searchName}
 							/>
 							<img src="/img/search_white.svg" className="p-2 rounded-r-lg bg-Blue-300 cursor-pointer" />
 							{boxState ? (
@@ -74,9 +80,7 @@ const SearchSchool = () => {
 										<div
 											key={idx}
 											className="w-[94%] h-[30px] hover:bg-Blue-100/75 cursor-pointer z-40 py-1"
-											// onClick={() => handleLocationSelect(location.place_name, location.x, location.y)}
-
-											// name.id 뽑아내기
+											onClick={() => handleSchoolSelect(name.id, name.name)}
 										>
 											<SearchSchoolList schoolName={name.name} />
 										</div>

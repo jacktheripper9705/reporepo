@@ -1,7 +1,9 @@
 import clsx from 'clsx';
+import { useNavigate } from 'react-router-dom';
 
 const GonggangBox = (data) => {
 	const result = data.data;
+	const navigate = useNavigate();
 	const durationSet = [
 		{ duration: 'Min15', name: '15분 이내', bg: 'bg-[#2563FF] bg-opacity-50' },
 		{ duration: 'Min30', name: '30분 이내', bg: 'bg-[#10C7F9] bg-opacity-50' },
@@ -12,8 +14,15 @@ const GonggangBox = (data) => {
 
 	const matchingDuration = durationSet.find((item) => item.duration === result.duration);
 
+	const handleClick = (id) => {
+		navigate(`posts/${id}`);
+	};
+
 	return (
-		<div className="flex-none w-[calc((100%-16px)/5)] h-full bg-[#666666] bg-opacity-10 rounded-3xl">
+		<div
+			className="flex-none w-[calc((100%-16px)/5)] h-full bg-[#666666] bg-opacity-10 rounded-3xl cursor-pointer"
+			onClick={() => handleClick(result.id)}
+		>
 			<div className="flex flex-col justify-center items-center">
 				<div
 					className={clsx(

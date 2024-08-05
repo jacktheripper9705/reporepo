@@ -13,11 +13,13 @@ const Navbar = () => {
 		token = undefined;
 	};
 
+	const refreshSite = () => {
+		window.location.href = '/';
+	};
+
 	return (
 		<div className={`h-[72px] absolute top-0 flex justify-between px-[8vw] items-center w-full bg-[#f5f5f5] z-20`}>
-			<Link to="/">
-				<img src="/img/logo.svg" alt="메인 Logo" className="w-[126px]" />
-			</Link>
+			<img src="/img/logo.svg" alt="메인 Logo" className="w-[126px] cursor-pointer" onClick={refreshSite} />
 
 			<div className="flex-template gap-5 text-Blue-400 text-[13px]">
 				{token && (
