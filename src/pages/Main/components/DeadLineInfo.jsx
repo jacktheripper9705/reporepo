@@ -23,8 +23,6 @@ const DeadLineInfo = () => {
 		shcoolId && schoolPosts(shcoolId);
 	}, [shcoolId]);
 
-	console.log(enddata);
-
 	const durationSet = [
 		{ duration: 'Min15', name: '15분 이내' },
 		{ duration: 'Min30', name: '30분 이내' },
