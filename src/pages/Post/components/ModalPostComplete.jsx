@@ -13,7 +13,7 @@ const ModalPostComplete = ({ isOpen, setIsOpen, text }) => {
 					<img src="/img/closeIcon.svg" onClick={handleClose} className="cursor-pointer" />
 				</div>
 				<div className="flex justify-end mt-10">
-					<Link to="/">
+					<Link to="/home">
 						<button className="py-2 px-4 rounded-3xl bg-Blue-200 text-white">홈으로 돌아가기</button>
 					</Link>
 				</div>
