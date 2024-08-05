@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import GonggangBox from './Gonggang/GonggangBox';
+import { useContext } from 'react';
+import { UnivPostsContext } from '../../../context/UnivPostsContext';
 
 const Gonggang = () => {
 	const [visibleStartIndex, setVisibleStartIndex] = useState(0);
 	const [isSliding, setIsSliding] = useState(false);
-	const boxes = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // GonggangBox를 나타내는 임의의 배열
+
+	const { univdata } = useContext(UnivPostsContext);
 
 	const handleClick = () => {
 		setIsSliding(true);
 		setTimeout(() => {
-			setVisibleStartIndex((prevIndex) => (prevIndex + 3) % boxes.length);
+			setVisibleStartIndex((prevIndex) => (prevIndex + 3) % univdata.length);
 			setIsSliding(false);
 		}, 500);
 	};
@@ -22,16 +25,16 @@ const Gonggang = () => {
 			</div>
 			<div className="w-full h-full flex gap-[4px] overflow-hidden relative">
 				<div className={`flex gap-[4px] transition-transform duration-500 ${isSliding ? 'slide-out' : ''}`}>
-					{boxes.slice(visibleStartIndex, visibleStartIndex + 5).map((box, index) => (
-						<GonggangBox key={index} />
+					{univdata.slice(visibleStartIndex, visibleStartIndex + 5).map((box, index) => (
+						<GonggangBox key={index} data={box} />
 					))}
 				</div>
 				{isSliding && (
 					<div className={`absolute inset-0 flex gap-[4px] transition-transform duration-500 slide-in`}>
-						{boxes
-							.slice((visibleStartIndex + 3) % boxes.length, (visibleStartIndex + 8) % boxes.length)
+						{univdata
+							.slice((visibleStartIndex + 3) % univdata.length, (visibleStartIndex + 8) % univdata.length)
 							.map((box, index) => (
-								<GonggangBox key={index} />
+								<GonggangBox key={index} data={box} />
 							))}
 					</div>
 				)}

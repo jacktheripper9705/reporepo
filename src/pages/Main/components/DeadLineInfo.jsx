@@ -1,4 +1,25 @@
+import { useRecoilState } from 'recoil';
+import { universityId } from '../../../stores/atoms/universityId';
+import { useEffect, useState } from 'react';
+import { getEnddate } from '../api/MainApi';
+
 const DeadLineInfo = () => {
+	const [shcoolId, setScoolId] = useRecoilState(universityId);
+	const [enddata, setEnddata] = useState(null); // 초기값을 null로 설정
+
+	useEffect(() => {
+		const schoolPosts = async (shcoolId) => {
+			try {
+				const data = await getEnddate(shcoolId);
+				setEnddata(data);
+			} catch (error) {
+				console.error('Failed to fetch user info:', error);
+			}
+		};
+
+		shcoolId && schoolPosts(shcoolId);
+	}, [shcoolId]);
+
 	const durationSet = [
 		{ duration: 'Min15', name: '15분 이내' },
 		{ duration: 'Min30', name: '30분 이내' },
@@ -6,12 +27,9 @@ const DeadLineInfo = () => {
 		{ duration: 'Hour2', name: '2시간 이내' },
 		{ duration: 'Over', name: '2시간 이상' },
 	];
-	let duration = 'Over';
-	const matchingDuration = durationSet.find((item) => item.duration === duration);
 
-	let title = 'XR 실험자 경험 인터뷰';
-	let location_name = '상상관';
-	let reward = '기프티콘';
+	// enddata가 있을 때만 matchingDuration 계산
+	const matchingDuration = enddata ? durationSet.find((item) => item.duration === enddata.duration) : null;
 
 	return (
 		<div className="w-full h-[356px] border px-[25px] bg-white rounded-2xl py-[11px] flex flex-col">
@@ -23,14 +41,22 @@ const DeadLineInfo = () => {
 			</div>
 			<div className="flex-col-template text-center">
 				<p className="text-[8px] text-Blue-500">소요시간</p>
-				<p className="text-[11px] text-Blue-500">{matchingDuration.name}</p>
-
-				<p className="mt-[10px] text-[15px] font-pretendardSemibold">{title}</p>
-				<p className="mt-[16px] text-[15px] font-pretendardSemibold">{location_name}</p>
+				<p className="text-[11px] text-Blue-500">
+					{matchingDuration ? matchingDuration.name : '정보 없음'}
+				</p>{' '}
+				{/* 정보 없을 경우 처리 */}
+				<p className="mt-[10px] text-[15px] font-pretendardSemibold">
+					{enddata ? enddata.title : '정보 없음'}
+				</p>{' '}
+				{/* 정보 없을 경우 처리 */}
+				<p className="mt-[16px] text-[15px] font-pretendardSemibold">
+					{enddata ? enddata.location_name : '정보 없음'}
+				</p>{' '}
+				{/* 정보 없을 경우 처리 */}
 			</div>
 			<div className="flex-template gap-3">
 				<img src="/img/presentIcon.svg" />
-				<p className="text-[11px]">{reward}</p>
+				<p className="text-[11px]">{enddata ? enddata.reward : '정보 없음'}</p> {/* 정보 없을 경우 처리 */}
 			</div>
 		</div>
 	);
