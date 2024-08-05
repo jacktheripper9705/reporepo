@@ -12,7 +12,6 @@ function KakaoRedirect() {
 			sessionStorage.setItem('accessToken', token);
 		}
 		KakaoLogin();
-		console.log(isRegister);
 		if (isRegister === 'true') {
 			navigate('/home', { replace: true });
 		} else {
