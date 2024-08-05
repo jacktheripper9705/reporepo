@@ -8,7 +8,7 @@ import ModalSchoolContent from '../Login/components/ModalSchoolContent';
 
 import { PostContext } from '../../context/PostContext';
 
-const PostDetail = () => {
+const PostUpdateDetail = () => {
 	const { postData, setPostData } = useContext(PostContext);
 
 	console.log(postData);
@@ -28,11 +28,11 @@ const PostDetail = () => {
 						<QuestionGeo />
 					</div>
 				</div>
-				<PageButton page="2 / 2" text="게시하기" className="bg-Blue-500" />
+				<PageButton page="2 / 2" text="수정하기" className="bg-Blue-500" />
 			</div>
 			<img src="/img/postbg.svg" className="absolute bottom-0 z-0 w-full" />
 		</>
 	);
 };
 
-export default PostDetail;
+export default PostUpdateDetail;

@@ -1,47 +1,30 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import PageButton from './components/PageButton';
 import PostTitle from './components/PostTitle';
 import Question from './components/Questions/Question';
 import QuestionBox from './components/Questions/QuestionBox';
 import { PostContext } from '../../context/PostContext';
-import { Spin } from 'antd';
+import { getTargetPostInfo } from '../PostInfo/api/PostInfoApi';
+import { useParams } from 'react-router-dom';
 
-const Post = () => {
+const PostUpdate = () => {
+	const { postid } = useParams();
+
 	const { postData, setPostData } = useContext(PostContext);
-	const [initialized, setInitialized] = useState(false);
-
-	const initialState = {
-		title: null,
-		location_latitude: null,
-		location_longitude: null,
-		location_name: null,
-		isuntact: null,
-		reward: null,
-		requirements: null,
-		contactlink: null,
-		surveylink: null,
-		startdate: null,
-		enddate: null,
-		duration: null,
-		universityId: null,
-		people: null,
-	};
-
-	useEffect(() => {
-		setPostData(initialState);
-		setInitialized(true);
-	}, []);
-
-	console.log(postData);
 
 	const handleInputChange = (e) => {
 		const { value } = e.target;
 		setPostData((prev) => ({ ...prev, requirements: value }));
 	};
 
-	if (!initialized) {
-		return <Spin />;
-	}
+	useEffect(() => {
+		const getPostInfo = async (postid) => {
+			const data = await getTargetPostInfo(postid);
+			setPostData((prev) => ({ ...prev, ...data.postDetails }));
+		};
+
+		getPostInfo(postid);
+	}, []);
 
 	return (
 		<>
@@ -71,11 +54,11 @@ const Post = () => {
 						</div>
 					</div>
 				</div>
-				<PageButton page="1 / 2" text="다음" link="/post/detail" className="bg-Blue-500" />
+				<PageButton page="1 / 2" text="다음" link={`/update/detail/${postid}`} className="bg-Blue-500" />
 			</div>
 			<img src="/img/postbg.svg" className="absolute bottom-0 z-0 w-full" />
 		</>
 	);
 };
 
-export default Post;
+export default PostUpdate;
