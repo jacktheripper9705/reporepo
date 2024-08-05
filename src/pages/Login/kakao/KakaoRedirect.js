@@ -14,7 +14,7 @@ function KakaoRedirect() {
 		KakaoLogin();
 		console.log(isRegister);
 		if (isRegister === 'true') {
-			navigate('/', { replace: true });
+			navigate('/home', { replace: true });
 		} else {
 			navigate('/login/userinfo', { replace: true });
 		}
