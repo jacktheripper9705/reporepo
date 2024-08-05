@@ -12,6 +12,10 @@ module.exports = {
 				pretendardSemibold: 'semiBold',
 				pretendardBold: 'bold',
 			},
+
+			backgroundColor: {
+				'custom-blue': 'rgba(37, 99, 255, 0.9)',
+			},
 		},
 	},
 	plugins: [],
