@@ -24,7 +24,9 @@ const Gonggang = () => {
 				<img src="/img/moreIcon.svg" onClick={handleClick} className="cursor-pointer" />
 			</div>
 			<div className="w-full h-full flex gap-[4px] overflow-hidden relative">
-				<div className={`flex gap-[4px] transition-transform duration-500 ${isSliding ? 'slide-out' : ''}`}>
+				<div
+					className={`flex gap-[4px] w-full transition-transform duration-500 ${isSliding ? 'slide-out' : ''}`}
+				>
 					{univdata.slice(visibleStartIndex, visibleStartIndex + 5).map((box, index) => (
 						<GonggangBox key={index} data={box} />
 					))}
