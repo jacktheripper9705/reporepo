@@ -7,3 +7,7 @@ export const getTargetPostInfo = async (postId) => {
 export const deleteTargetPostInfo = async (postId) => {
 	return await API.delete(`/posts/${postId}`);
 };
+
+export const putTargetPostInfo = async (postId, reqBody) => {
+	return await API.put(`/posts/${postId}`, reqBody);
+};

@@ -20,6 +20,8 @@ import KakaoRedirect from './pages/Login/kakao/KakaoRedirect';
 import { PostProvider } from './context/PostContext';
 import AppliesInfo from './pages/Applies/AppliesInfo';
 import { ReadProvider } from './context/ReadContext';
+import PostUpdate from './pages/Post/PostUpdate';
+import PostUpdateDetail from './pages/Post/PostUpdateDetail';
 
 const Router = () => {
 	return (
@@ -33,13 +35,16 @@ const Router = () => {
 					<Route path="/authkakao" element={<KakaoRedirect />} />
 
 					<Route path="/mylists" element={<MyLists />} />
-					<Route path="/mylists/:postId" element={<PostInfo />} />
-					<Route path="/mylists/:postId/applicants" element={<Applicants />} />
+					<Route path="/mylists/:postid" element={<PostInfo />} />
+					<Route path="/mylists/:postid/applicants" element={<Applicants />} />
 
 					<Route path="/applies" element={<Applies />} />
-					<Route path="/applies/:postId" element={<AppliesInfo />} />
+					<Route path="/applies/:postid" element={<AppliesInfo />} />
 
 					<Route path="/posts/:postid" element={<PostInfo />} />
+
+					<Route path="/update/:postid" element={<PostUpdate />} />
+					<Route path="/update/detail/:postid" element={<PostUpdateDetail />} />
 
 					<Route path="/post" element={<Post />} />
 					<Route path="/post/detail" element={<PostDetail />} />

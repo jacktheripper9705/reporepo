@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 
-const ModalPostComplete = ({ isOpen, setIsOpen }) => {
+const ModalPostComplete = ({ isOpen, setIsOpen, text }) => {
 	const handleClose = () => {
 		setIsOpen(!isOpen);
 	};
+
 	return (
 		<>
 			<div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
 				<div className="flex justify-between">
-					<p>글 작성이 완료되었어요!</p>
+					<p>글 {text}이 완료되었어요!</p>
 					<img src="/img/closeIcon.svg" onClick={handleClose} className="cursor-pointer" />
 				</div>
 				<div className="flex justify-end mt-10">

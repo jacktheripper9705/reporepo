@@ -21,7 +21,7 @@ const DeadLineInfo = () => {
 			<div className="w-[168px] flex-col-template mt-2">
 				<img src="/img/daedline.svg" />
 			</div>
-			<div className="flex-col-template">
+			<div className="flex-col-template text-center">
 				<p className="text-[8px] text-Blue-500">소요시간</p>
 				<p className="text-[11px] text-Blue-500">{matchingDuration.name}</p>
 

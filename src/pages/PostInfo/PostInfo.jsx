@@ -5,19 +5,22 @@ import { ReadContext } from '../../context/ReadContext';
 import { getTargetPostInfo } from './api/PostInfoApi';
 
 import { Spin } from 'antd';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 const PostInfo = () => {
+	const { postid } = useParams();
 	const [isLoading, setIsLoading] = useState(true);
 
 	const { readData, setReadData } = useContext(ReadContext);
 
-	// 모집글 리스트에서 받아온 id
-	const postId = 14;
+	// // 모집글 리스트에서 받아온 id
+	// const postId = 14;
+
+	console.log(postid);
 
 	useEffect(() => {
 		const getPostsInfo = async () => {
-			const data = await getTargetPostInfo(postId);
+			const data = await getTargetPostInfo(postid);
 
 			setReadData((prev) => ({ ...prev, ...data }));
 			setIsLoading(false);

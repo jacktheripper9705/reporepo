@@ -37,11 +37,11 @@ const CategoryBox = ({ position, btn1, btn2 }) => {
 	};
 
 	const handleEdit = () => {
-		console.log('수정 페이지로 이동');
+		navigate(`/update/${readData.postDetails.id}`);
 	};
 
 	const handleDelete = async () => {
-		const data = await deleteTargetPostInfo(readData.postDetails.id);
+		await deleteTargetPostInfo(readData.postDetails.id);
 
 		setIsOpen(!isOpen);
 	};
@@ -85,7 +85,7 @@ const CategoryBox = ({ position, btn1, btn2 }) => {
 						</div>
 					</div>
 
-					{!readData.postDetails.isuntact ? (
+					{readData.postDetails.isuntact ? (
 						<>
 							<Question question="인터뷰/실험 장소를 진행하는 장소" />
 							<div className="w-full border border-x-0 border-t-0 border-b-2 border-black mt-2 mb-[3vh] py-2 px-1">
